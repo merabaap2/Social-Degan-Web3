@@ -84,7 +84,7 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <GradientButton href="/connect" size="lg" className="text-lg px-8 py-4">
+            <GradientButton href="/connect" size="lg" className="text-lg px-8 py-4 flex items-center justify-center">
               <Rocket className="w-5 h-5 mr-2" />
               Launch App
             </GradientButton>
@@ -289,7 +289,7 @@ const Index = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Join the beta and start getting alerts from your Farcaster network today.
             </p>
-            <GradientButton href="/connect" size="lg" className="text-lg px-12 py-4">
+            <GradientButton href="/connect" size="lg" className="text-lg px-12 py-4 flex items-center justify-center">
               Get Started Now
               <ArrowRight className="w-5 h-5 ml-2" />
             </GradientButton>
