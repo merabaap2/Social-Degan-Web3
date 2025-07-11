@@ -31,7 +31,7 @@ export function GradientButton({
   }} whileTap={{
     scale: 0.95
   }}>
-      <span className="relative z-10 mx-0 my-0 px-0">{children}</span>
+      <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
       {variant === 'primary' && <motion.div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" initial={{
       x: '-100%'
     }} whileHover={{
