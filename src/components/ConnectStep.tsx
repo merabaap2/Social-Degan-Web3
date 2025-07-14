@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { GradientButton } from "./GradientButton";
+import { WalletConnect } from "./WalletConnect";
 import { cn } from "@/lib/utils";
 
 interface ConnectStepProps {
@@ -25,23 +26,16 @@ const mockFriends = [
 
 export function ConnectStep({ onComplete }: ConnectStepProps) {
   const [currentStep, setCurrentStep] = useState<'connect' | 'friends'>('connect');
-  const [isConnecting, setIsConnecting] = useState(false);
   const [userData, setUserData] = useState<{ username: string; avatarUrl: string } | null>(null);
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
 
-  const handleConnect = async () => {
-    setIsConnecting(true);
-    
-    // Simulate Farcaster connection
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+  const handleConnect = (address: string) => {
     const mockUserData = {
-      username: 'your_crypto',
+      username: address,
       avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face'
     };
     
     setUserData(mockUserData);
-    setIsConnecting(false);
     setCurrentStep('friends');
   };
 
@@ -85,9 +79,9 @@ export function ConnectStep({ onComplete }: ConnectStepProps) {
           >
             <Card className="bg-card/50 backdrop-blur-sm border-border/50">
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl">Connect Your Farcaster Account</CardTitle>
+                  <CardTitle className="text-2xl">Connect Your Wallet</CardTitle>
                 <p className="text-muted-foreground">
-                  Connect your Farcaster account to see trades from your social graph
+                    Connect your wallet to see trades from your social graph
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -96,21 +90,12 @@ export function ConnectStep({ onComplete }: ConnectStepProps) {
                     <div className="w-20 h-20 mx-auto bg-gradient-primary rounded-2xl flex items-center justify-center mb-4">
                       <Wallet className="w-10 h-10 text-white" />
                     </div>
-                    <GradientButton 
-                      onClick={handleConnect}
-                      disabled={isConnecting}
+                    <WalletConnect
+                      onConnect={handleConnect}
+                      buttonText="Connect with MetaMask"
                       size="lg"
                       className="w-full max-w-sm mx-auto"
-                    >
-                      {isConnecting ? (
-                        <div className="flex items-center space-x-2">
-                          <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-                          <span>Connecting...</span>
-                        </div>
-                      ) : (
-                        <>Connect with Farcaster</>
-                      )}
-                    </GradientButton>
+                    />
                     <p className="text-xs text-muted-foreground">
                       Powered by{" "}
                       <a href="#" className="text-primary hover:underline">
@@ -136,8 +121,8 @@ export function ConnectStep({ onComplete }: ConnectStepProps) {
                         </AvatarFallback>
                       </Avatar>
                       <div>
-                        <div className="font-semibold text-lg">{userData.username}</div>
-                        <div className="text-muted-foreground">@{userData.username}</div>
+                          <div className="font-semibold text-lg">{`${userData.username.substring(0, 6)}...${userData.username.substring(userData.username.length - 4)}`}</div>
+                          <div className="text-muted-foreground">MetaMask</div>
                       </div>
                     </div>
                     <Button 
