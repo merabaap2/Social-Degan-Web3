@@ -1,8 +1,31 @@
-# Welcome to your Lovable project
+# Social Signals - Crypto Trading Intelligence Platform
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/3cc7211b-1b12-4ceb-be71-040c1a3fa7c2
+
+## Deployment Instructions
+
+### Deploying to Vercel
+
+1. Push your code to a GitHub repository
+2. Go to [Vercel](https://vercel.com) and create a new project
+3. Import your GitHub repository
+4. Use the following settings:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+
+**Important**: The project includes a `vercel.json` file that configures proper routing for the SPA. This ensures that routes like `/connect` work correctly when accessed directly.
+
+### Troubleshooting Deployment Issues
+
+If you encounter 404 errors when accessing routes directly (like `/connect`), ensure:
+
+1. The `vercel.json` file is present in your repository
+2. The file contains the correct configuration for SPA routing
+3. You've redeployed after adding the configuration file
 
 ## How can I edit this code?
 
