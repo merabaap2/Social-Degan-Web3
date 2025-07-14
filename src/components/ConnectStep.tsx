@@ -174,8 +174,9 @@ export function ConnectStep({ onComplete }: ConnectStepProps) {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
+                      onClick={() => handleFriendToggle(friend.id)}
                       className={cn(
-                        "flex items-center space-x-4 p-4 rounded-xl border transition-all",
+                        "flex items-center space-x-4 p-4 rounded-xl border transition-all cursor-pointer",
                         selectedFriends.includes(friend.id)
                           ? "border-primary/50 bg-primary/5"
                           : "border-border/50 hover:border-border"

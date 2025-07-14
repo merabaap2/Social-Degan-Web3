@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { GradientButton } from "@/components/GradientButton";
+import { WalletConnect } from "@/components/WalletConnect";
 
 const Index = () => {
   const features = [
@@ -49,9 +50,7 @@ const Index = () => {
               <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
-              <GradientButton href="/connect" size="sm">
-                Launch App
-              </GradientButton>
+              <WalletConnect size="sm" buttonText="Connect Wallet" />
             </div>
           </div>
         </div>
@@ -84,10 +83,7 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <GradientButton href="/connect" size="lg" className="text-lg px-8 py-4 flex items-center justify-center">
-              <Rocket className="w-5 h-5 mr-2" />
-              Launch App
-            </GradientButton>
+            <WalletConnect size="lg" buttonText="Connect Wallet" className="text-lg px-8 py-4" />
             <Button variant="outline" size="lg" asChild className="text-lg px-8 py-4">
               <a href="#demo">
                 <Eye className="w-5 h-5 mr-2" />
