@@ -19,6 +19,7 @@ export function PageHeader() {
 
   const navigation = [
     { name: 'Dashboard', href: '/app', current: currentPath === '/app' },
+    { name: 'Friends', href: '/friends', current: currentPath === '/friends' },
     { name: 'Settings', href: '/settings', current: currentPath === '/settings' },
     { name: 'About', href: '/about', current: currentPath === '/about' },
   ];

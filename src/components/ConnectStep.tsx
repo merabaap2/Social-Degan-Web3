@@ -108,9 +108,12 @@ export function ConnectStep({ onComplete }: ConnectStepProps) {
                           <span>Connecting...</span>
                         </div>
                       ) : (
-                        <>Connect with Farcaster</>
+                        <>Connect Demo Account</>
                       )}
                     </GradientButton>
+                    <p className="text-xs text-muted-foreground">
+                      This is a demo connection. No actual Farcaster account required.
+                    </p>
                     <p className="text-xs text-muted-foreground">
                       Powered by{" "}
                       <a href="#" className="text-primary hover:underline">

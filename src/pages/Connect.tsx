@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ConnectStep } from "@/components/ConnectStep";
 import { PageHeader } from "@/components/PageHeader";
+import { Button } from "@/components/ui/button";
 
 interface UserData {
   username: string;
@@ -62,6 +63,11 @@ export default function Connect() {
             <p className="text-muted-foreground mb-6">
               Redirecting you to your dashboard...
             </p>
+            <div className="flex justify-center space-x-4">
+              <Button variant="outline" asChild>
+                <Link to="/friends">Add More Friends</Link>
+              </Button>
+            </div>
           </motion.div>
         )}
       </main>

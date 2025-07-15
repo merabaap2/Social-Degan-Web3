@@ -50,7 +50,11 @@ const Index = () => {
               <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
-              <WalletConnect size="sm" buttonText="Connect Wallet" />
+              <Button asChild size="sm" variant="outline">
+                <Link to="/connect">
+                  Connect
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -83,7 +87,13 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <WalletConnect size="lg" buttonText="Connect Wallet" className="text-lg px-8 py-4" />
+            <GradientButton 
+              size="lg" 
+              className="text-lg px-8 py-4"
+              onClick={() => window.location.href = '/connect'}
+            >
+              Launch Site
+            </GradientButton>
             <Button variant="outline" size="lg" asChild className="text-lg px-8 py-4">
               <a href="#demo">
                 <Eye className="w-5 h-5 mr-2" />
