@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Rocket, Users, TrendingUp, Zap, ArrowRight, ExternalLink, Bell, Eye, Copy } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +27,8 @@ const Index = () => {
     }
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -50,7 +52,11 @@ const Index = () => {
               <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
-              <WalletConnect size="sm" buttonText="Connect Wallet" />
+              <WalletConnect
+                size="sm"
+                buttonText="Connect Wallet"
+                onConnect={() => navigate('/connect')}
+              />
             </div>
           </div>
         </div>
@@ -83,7 +89,12 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <WalletConnect size="lg" buttonText="Connect Wallet" className="text-lg px-8 py-4" />
+            <WalletConnect
+              size="lg"
+              buttonText="Connect Wallet"
+              className="text-lg px-8 py-4"
+              onConnect={() => navigate('/connect')}
+            />
             <Button variant="outline" size="lg" asChild className="text-lg px-8 py-4">
               <a href="#demo">
                 <Eye className="w-5 h-5 mr-2" />
