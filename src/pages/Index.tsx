@@ -54,7 +54,6 @@ const Index = () => {
               </Link>
               <WalletConnect
                 size="sm"
-                buttonText="Connect Wallet"
                 onConnect={() => navigate('/connect')}
               />
             </div>
@@ -89,12 +88,13 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <WalletConnect
+            <GradientButton
+              href="/connect"
               size="lg"
-              buttonText="Connect Wallet"
               className="text-lg px-8 py-4"
-              onConnect={() => navigate('/connect')}
-            />
+            >
+              Launch
+            </GradientButton>
             <Button variant="outline" size="lg" asChild className="text-lg px-8 py-4">
               <a href="#demo">
                 <Eye className="w-5 h-5 mr-2" />
