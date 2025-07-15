@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { useWallet } from '@/hooks/use-wallet';
 import { GradientButton } from './GradientButton';
 
 // Using the ethereum type from ethereum.d.ts
@@ -11,12 +12,13 @@ interface WalletConnectProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function WalletConnect({ 
-  onConnect, 
+export function WalletConnect({
+  onConnect,
   buttonText = 'Connect Wallet',
   className = '',
   size = 'md'
 }: WalletConnectProps) {
+  const { connect } = useWallet();
   const [isConnecting, setIsConnecting] = useState(false);
   const [account, setAccount] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -45,27 +47,18 @@ export function WalletConnect({
   const connectWallet = async () => {
     setIsConnecting(true);
     setError(null);
-    
+
     try {
-      if (!window.ethereum) {
-        throw new Error('MetaMask not installed! Please install MetaMask to continue.');
-      }
-      
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const accounts = await provider.send('eth_requestAccounts', []);
-      
-      if (accounts.length > 0) {
-        // In ethers v6, we need to get the signer to get the connected address
-        const signer = await provider.getSigner();
-        const address = await signer.getAddress();
-        setAccount(address);
-        if (onConnect) onConnect(address);
-      } else {
-        throw new Error('No accounts found');
-      }
-    } catch (err: any) {
+      const address = await connect();
+      setAccount(address);
+      if (onConnect) onConnect(address);
+    } catch (err: unknown) {
       console.error('Error connecting wallet:', err);
-      setError(err.message || 'Failed to connect wallet');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Failed to connect wallet');
+      }
     } finally {
       setIsConnecting(false);
     }
